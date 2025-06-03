@@ -32,61 +32,67 @@ export default function ArmorStand({ frame }: ArmorStandProps) {
     rightLegRef.current.rotation.set(toRad(frame.right_leg.x), toRad(frame.right_leg.y), toRad(frame.right_leg.z));
   });
 
-  const metalMaterial = new THREE.MeshStandardMaterial({
-    color: '#b8b8b8',
-    metalness: 0.6,
-    roughness: 0.2,
+  const woodMaterial = new THREE.MeshStandardMaterial({
+    color: '#8B4513',
+    roughness: 0.8,
+    metalness: 0.1,
   });
 
   return (
     <group ref={bodyRef}>
-      {/* Base */}
-      <mesh position={[0, 0, 0]} receiveShadow castShadow>
-        <boxGeometry args={[0.5, 0.1, 0.5]} />
-        <meshStandardMaterial {...metalMaterial} />
+      {/* Base Plate */}
+      <mesh position={[0, 0.05, 0]} receiveShadow castShadow>
+        <boxGeometry args={[0.6, 0.1, 0.6]} />
+        <meshStandardMaterial {...woodMaterial} />
       </mesh>
 
-      {/* Stand */}
-      <mesh position={[0, 0.6, 0]} receiveShadow castShadow>
-        <cylinderGeometry args={[0.05, 0.05, 1.2, 8]} />
-        <meshStandardMaterial {...metalMaterial} />
+      {/* Center Rod */}
+      <mesh position={[0, 0.85, 0]} receiveShadow castShadow>
+        <boxGeometry args={[0.2, 1.6, 0.2]} />
+        <meshStandardMaterial {...woodMaterial} />
+      </mesh>
+
+      {/* Shoulders Bar */}
+      <mesh position={[0, 1.4, 0]} receiveShadow castShadow>
+        <boxGeometry args={[0.6, 0.2, 0.2]} />
+        <meshStandardMaterial {...woodMaterial} />
       </mesh>
 
       {/* Head */}
-      <group ref={headRef} position={[0, 1.1, 0]}>
+      <group ref={headRef} position={[0, 1.7, 0]}>
         <mesh receiveShadow castShadow>
           <boxGeometry args={[0.25, 0.25, 0.25]} />
-          <meshStandardMaterial {...metalMaterial} />
+          <meshStandardMaterial {...woodMaterial} />
         </mesh>
       </group>
 
       {/* Arms */}
-      <group ref={leftArmRef} position={[0.2, 0.8, 0]}>
+      <group ref={leftArmRef} position={[0.3, 1.4, 0]}>
         <mesh receiveShadow castShadow>
-          <cylinderGeometry args={[0.04, 0.04, 0.4, 8]} />
-          <meshStandardMaterial {...metalMaterial} />
+          <boxGeometry args={[0.125, 0.75, 0.125]} />
+          <meshStandardMaterial {...woodMaterial} />
         </mesh>
       </group>
 
-      <group ref={rightArmRef} position={[-0.2, 0.8, 0]}>
+      <group ref={rightArmRef} position={[-0.3, 1.4, 0]}>
         <mesh receiveShadow castShadow>
-          <cylinderGeometry args={[0.04, 0.04, 0.4, 8]} />
-          <meshStandardMaterial {...metalMaterial} />
+          <boxGeometry args={[0.125, 0.75, 0.125]} />
+          <meshStandardMaterial {...woodMaterial} />
         </mesh>
       </group>
 
       {/* Legs */}
-      <group ref={leftLegRef} position={[0.1, 0.2, 0]}>
+      <group ref={leftLegRef} position={[0.125, 0.4, 0]}>
         <mesh receiveShadow castShadow>
-          <cylinderGeometry args={[0.04, 0.04, 0.4, 8]} />
-          <meshStandardMaterial {...metalMaterial} />
+          <boxGeometry args={[0.125, 0.75, 0.125]} />
+          <meshStandardMaterial {...woodMaterial} />
         </mesh>
       </group>
 
-      <group ref={rightLegRef} position={[-0.1, 0.2, 0]}>
+      <group ref={rightLegRef} position={[-0.125, 0.4, 0]}>
         <mesh receiveShadow castShadow>
-          <cylinderGeometry args={[0.04, 0.04, 0.4, 8]} />
-          <meshStandardMaterial {...metalMaterial} />
+          <boxGeometry args={[0.125, 0.75, 0.125]} />
+          <meshStandardMaterial {...woodMaterial} />
         </mesh>
       </group>
     </group>
