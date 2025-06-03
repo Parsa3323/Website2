@@ -32,72 +32,72 @@ export default function ArmorStand({ frame }: ArmorStandProps) {
     rightLegRef.current.rotation.set(toRad(frame.right_leg.x), toRad(frame.right_leg.y), toRad(frame.right_leg.z));
   });
 
-  // Minecraft oak wood texture
-  const woodTexture = new THREE.TextureLoader().load('https://raw.githubusercontent.com/minecraft/assets/master/textures/block/oak_planks.png');
-  woodTexture.magFilter = THREE.NearestFilter;
-  woodTexture.minFilter = THREE.NearestFilter;
+  // Load the actual Minecraft armor stand texture
+  const armorStandTexture = new THREE.TextureLoader().load('https://raw.githubusercontent.com/InventivetalentDev/minecraft-assets/1.19.3/assets/minecraft/textures/entity/armorstand/wood.png');
+  armorStandTexture.magFilter = THREE.NearestFilter;
+  armorStandTexture.minFilter = THREE.NearestFilter;
 
-  const woodMaterial = new THREE.MeshStandardMaterial({
-    map: woodTexture,
+  const armorStandMaterial = new THREE.MeshStandardMaterial({
+    map: armorStandTexture,
     roughness: 1,
     metalness: 0
   });
 
   return (
     <group ref={bodyRef} scale={[0.0625, 0.0625, 0.0625]}>
-      {/* Base Plate */}
-      <mesh position={[0, 1, 0]} receiveShadow castShadow>
+      {/* Base Plate (3x1x3 pixels) */}
+      <mesh position={[0, 0.5, 0]} receiveShadow castShadow>
         <boxGeometry args={[12, 1, 12]} />
-        <meshStandardMaterial {...woodMaterial} />
+        <meshStandardMaterial {...armorStandMaterial} />
       </mesh>
 
-      {/* Center Pole */}
+      {/* Center Rod (2x7.5x2 pixels) */}
       <mesh position={[0, 16, 0]} receiveShadow castShadow>
         <boxGeometry args={[2, 30, 2]} />
-        <meshStandardMaterial {...woodMaterial} />
+        <meshStandardMaterial {...armorStandMaterial} />
       </mesh>
 
-      {/* Shoulder Bar */}
+      {/* Shoulder Bar (6x1x2 pixels) */}
       <mesh position={[0, 28, 0]} receiveShadow castShadow>
         <boxGeometry args={[12, 2, 2]} />
-        <meshStandardMaterial {...woodMaterial} />
+        <meshStandardMaterial {...armorStandMaterial} />
       </mesh>
 
-      {/* Head */}
+      {/* Head (2x2x2 pixels) */}
       <group ref={headRef} position={[0, 32, 0]}>
         <mesh receiveShadow castShadow>
           <boxGeometry args={[8, 8, 8]} />
-          <meshStandardMaterial {...woodMaterial} />
+          <meshStandardMaterial {...armorStandMaterial} />
         </mesh>
       </group>
 
-      {/* Arms */}
+      {/* Arms (2x6x2 pixels each) */}
       <group ref={leftArmRef} position={[5, 28, 0]}>
         <mesh receiveShadow castShadow>
           <boxGeometry args={[2, 12, 2]} />
-          <meshStandardMaterial {...woodMaterial} />
+          <meshStandardMaterial {...armorStandMaterial} />
         </mesh>
       </group>
 
       <group ref={rightArmRef} position={[-5, 28, 0]}>
         <mesh receiveShadow castShadow>
           <boxGeometry args={[2, 12, 2]} />
-          <meshStandardMaterial {...woodMaterial} />
+          <meshStandardMaterial {...armorStandMaterial} />
         </mesh>
       </group>
 
-      {/* Legs */}
+      {/* Legs (2x5.5x2 pixels each) */}
       <group ref={leftLegRef} position={[2, 12, 0]}>
         <mesh receiveShadow castShadow>
           <boxGeometry args={[2, 11, 2]} />
-          <meshStandardMaterial {...woodMaterial} />
+          <meshStandardMaterial {...armorStandMaterial} />
         </mesh>
       </group>
 
       <group ref={rightLegRef} position={[-2, 12, 0]}>
         <mesh receiveShadow castShadow>
           <boxGeometry args={[2, 11, 2]} />
-          <meshStandardMaterial {...woodMaterial} />
+          <meshStandardMaterial {...armorStandMaterial} />
         </mesh>
       </group>
     </group>
